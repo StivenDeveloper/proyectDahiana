@@ -9,8 +9,8 @@ let opcionPersonaje
 let inputLion;
 let inputJill;
 let inputChris;
-let personajeJugador;
-let personajeEnemigo;
+let personajeJugador = document.getElementById('img-jugador');
+let personajeEnemigo = document.getElementById('img-enemigo');;
 
 class Personajes {
     constructor(nombre, foto, vida) {
@@ -20,6 +20,31 @@ class Personajes {
        
     }
 }
+contenedorPersonajes.addEventListener("click", function(event) {
+    const target = event.target;
+    if (target.tagName === "IMG") {
+      const imagenes = contenedorPersonajes.getElementsByTagName("img");
+      for (let i = 0; i < imagenes.length; i++) {
+        const imagen = imagenes[i];
+        imagen.style.display = "none";
+        imagen.classList.remove("move-left"); 
+      }
+      enemigoAleatorio();
+      personajeJugador.innerHTML = mostrarImagen(target.src, target.alt);
+      target.classList.add("move-left"); 
+    }
+  });
+
+
+
+
+function mostrarImagen(direccion, nombre) {
+  let imagen = `
+    <img src="${direccion}" alt="${nombre}" id="${nombre}">
+  `;
+  return imagen;
+}
+
 
 let lion = new Personajes('Lion', 'img/lion.png', 100)
 let jill = new Personajes('Jill' , 'img/jill.png', 100)
@@ -49,27 +74,7 @@ inputLion = document.getElementById('Lion');
 inputJill= document.getElementById('Jill');
 inputChris =document.getElementById('Chris');
 
-if(inputLion.checked){
-    personajeJugador =  lion.nombre;
-    imgJugadores.innerHTML= mostrarImagen(lion.foto,lion.nombre);
-}else if(inputJill.checked){
-    personajeJugador =  jill.nombre;
-    imgJugadores.innerHTML= mostrarImagen(jill.foto,jill.nombre);
-    inputLion.addEventListener('click', function(){
-        lion.style.display="none";
-        jill.style.display="block";
-    });
-}else{
-    personajeJugador =  chris.nombre;
-    imgJugadores.innerHTML= mostrarImagen(chris.foto,chris.nombre);
-}
 
-inputLion.addEventListener('click', function(){
-    lion.style.display="none";
-    jill.style.display="block";
-});
-inputJill.addEventListener('click', );
-inputChris.addEventListener('click', );
 
 
 // function seccionLucha(){
@@ -81,36 +86,6 @@ function mostrarImagen(direccion,nombre){
     `
     return imagen;
 }
-function personajeLion(){
-    contenedorPersonajes.style.display = 'flex'
-    seccionLucha.style.display = 'none' 
-
-    personajeJudador = lion.nombre;
-     imgJugadores.innerHTML=`<img src="img/lion.png"></img>`
-    enemigoAleatorio();
-    console.log(personajeJudador)
-    console.log(personajeEnemigo)
-
-}
-function personajeChris(){
-    contenedorPersonajes.style.display = 'flex'
-    seccionLucha.style.display = 'none' 
-    personajeJudador = chris.nombre;
-    imgJugadores.innerHTML=`<img src="img/cr.png"></img>`
-    enemigoAleatorio();
-
-    
-}
-function personajeJill(){
-    contenedorPersonajes.style.display = 'flex'
-    seccionLucha.style.display = 'none' 
-    personajeJudador = jill.nombre;
-    imgJugadores.innerHTML=`<img src="img/jill.png"></img>`
-    enemigoAleatorio();
-    
-}
-
-
 
 function ataqueAgua() {
     ataqueJugador = "AGUA"
@@ -130,11 +105,11 @@ function ataqueGranada() {
 function enemigoAleatorio(){
     let num = aleatorio(1,3);
     if(num==1){
-        personajeEnemigo=albert.nombre
+        personajeEnemigo.innerHTML= mostrarImagen("./img/albert.png", "Albert");
     }else if(num==2){
-        personajeEnemigo=nemesis.nombre
+        personajeEnemigo.innerHTML= mostrarImagen("./img/nemesis.png", "Nemesis");
     }else{
-        personajeEnemigo=salazar.nombre
+        personajeEnemigo.innerHTML= mostrarImagen("./img/salazar.png", "salazar");
     }  
 }
 
