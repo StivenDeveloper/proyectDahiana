@@ -144,16 +144,25 @@ input{
     height: auto;
     display: inline-block;
 }
+.agua img:hover{
+    cursor: pointer;
+}
+
 .fuego img{
     width: 20vh;
     height: auto;
     display: inline-block;
 }
+.fuego img:hover{
+    cursor: pointer;
+}
 .granada img{
     width: 20vh;
     height: auto;
     display: inline-block;
-
+}
+.granada img:hover{
+    cursor: pointer;
 }
 
 #img-jugador.move-left {
@@ -172,10 +181,10 @@ input{
   
 .contenedor-personajes--img {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    margin-right: 50px;
     align-items: center;
     max-width: 800px;
-    margin: 0 auto;
 }
   
 #img-jugador {
