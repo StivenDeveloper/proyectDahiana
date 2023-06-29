@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -108,7 +110,6 @@
     flex-direction: row;
     justify-content:center;
     margin-left: 25vw;
-    
 }
 
 
@@ -180,11 +181,18 @@ input{
 }
   
 .contenedor-personajes--img {
-    display: flex;
-    justify-content: center;
-    margin-right: 50px;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 650px;
+    margin-left: 100px;
     max-width: 800px;
+    
+}
+
+.contenedor-personajes--img img {
+    width: auto;
+    height: 380px;
+    
 }
   
 #img-jugador {
@@ -204,8 +212,6 @@ input{
     flex-direction: column;
     align-items: flex-start;
     margin: 50px;
- 
- 
  }
  
  #contenedor-enemigo-vida{
@@ -226,7 +232,7 @@ input{
 #vida-progreso-jugador{
     display: block;
     height: 100%;
-    background-color: #ff0000;
+    background-color: #e24040;
     width: 100%; /* Cambia este valor con JavaScript para representar el progreso */
     border-radius: 5px;
 }
@@ -240,4 +246,51 @@ input{
   }
 
 
-  
+  #contendedor-logo-ataque img{
+    position: fixed;
+  }
+
+  #contendedor-logo-ataque img{
+    height: auto;
+    width: 100px;
+  }
+
+  #contendedor-mensaje{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+    text-align: center;
+  }
+
+  .condenedor-barra{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 400px;
+    margin-top: -180px;
+  }
+
+  #contenedor-ataques{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+  }
+
+  #contendedor-mensaje{
+    background-color: purple;
+    padding: 5px;
+    border-radius: 3px;
+    width: 400px;
+    height: auto;
+    margin-left: 35vw;
+    margin-top: -100px;
+    position: fixed;
+    box-shadow: 4px 4px 4px rgb(124, 124, 10);
+  }
+
+  #contendedor-mensaje p{
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: azure;
+  }

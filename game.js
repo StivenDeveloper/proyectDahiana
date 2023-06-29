@@ -9,6 +9,8 @@ const mensaje= document.getElementById('contendedor-mensaje')
 const imgAtaque= document.getElementById('contendedor-logo-ataque')
 const barraVidaJugador = document.querySelector('#vida-progreso-jugador')
 const barraVidaEnemigo = document.querySelector('#vida-progreso-enemigo')
+const contenedorBarraJugador = document.querySelector('#contenedor-jugador-vida')
+const contenedorBarraEnemigo = document.querySelector('#contenedor-enemigo-vida')
 let personajes=[]
 let ataques=[];
 let opcionPersonaje
@@ -24,7 +26,7 @@ let ataqueJugador;
 let ataqueEnemigo;
 let vidaJugador=100;
 let vidaEnemigo=100;
-let tipoataque= aleatorio(1,2);
+let tipoataque =1
 let enemigo;
 let jugador;
 
@@ -66,7 +68,9 @@ inputChris =document.getElementById('Chris');
 
 
 
-
+botonAtaques.style.display="none"
+contenedorBarraJugador.style.display="none"
+contenedorBarraEnemigo.style.display="none"
 contenedorPersonajes.addEventListener("click", function(event) {
     const target = event.target;
     if (target.tagName === "IMG") {
@@ -84,25 +88,24 @@ contenedorPersonajes.addEventListener("click", function(event) {
     }
     botonAtaques.style.display="block"
     lucha()
-
+    tipoataque= aleatorio(1,2);
   });
 
 function lucha(){ 
     console.log(vidaJugador)
     console.log(vidaEnemigo)
-
+    contenedorBarraJugador.style.display="block"
+    contenedorBarraEnemigo.style.display="block"
     if(vidaJugador >0 && vidaEnemigo>0){
         botonAgua.addEventListener("click", ataquesPersonajes)
         botonFuego.addEventListener("click", ataquesPersonajes)
         botonGranada.addEventListener("click", ataquesPersonajes)
     }else{
         imgAtaque.style.display="none";
-        botonAgua.style.cursor="not-allowed";
-        botonFuego.style.cursor="not-allowed";
-        botonGranada.style.cursor="not-allowed";
-        botonAgua.disabled = true;
-        botonFuego.disabled = true;
-        botonGranada.disabled = true;
+        botonAgua.style.display="none";
+        botonFuego.style.display="none";
+        botonGranada.style.display="none";
+
         mensajeFinal()
     }
 }
@@ -112,7 +115,6 @@ function lucha(){
 
 function ataquesPersonajes(e){
     const target = e.target
-  
     if(target.alt=="agua"){
         ataqueJugador = "agua"
     }else if (target.alt=="fuego"){
@@ -122,7 +124,7 @@ function ataquesPersonajes(e){
     }
     ataqueEnemigo = ataqueAleatorio();
     if(tipoataque==1){
-         imgAtaque.innerHTML=mostrarImagen('img/logo-ataque.png')
+        imgAtaque.innerHTML=mostrarImagen('img/logo-ataque.png')
         let num = luchaCondicion(ataqueJugador,ataqueEnemigo)
         vidaJugador-= num;
         barraVidaJugador.style.width = vidaJugador + "%"
