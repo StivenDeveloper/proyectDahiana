@@ -198,4 +198,46 @@ input{
     height: auto;
     transform: scaleX(-1);
 }
+
+#contenedor-jugador-vida{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 50px;
+ 
+ 
+ }
+ 
+ #contenedor-enemigo-vida{
+     display: flex;
+     flex-direction: column;
+     align-items: flex-end;
+     margin: 50px;
+ }
+
+ .vida-bar{
+    width: 200px;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px gold;
+  }
+
+#vida-progreso-jugador{
+    display: block;
+    height: 100%;
+    background-color: #ff0000;
+    width: 100%; /* Cambia este valor con JavaScript para representar el progreso */
+    border-radius: 5px;
+}
+
+#vida-progreso-enemigo{
+    display: block;
+    height: 100%;
+    background-color: #ff0000;
+    width: 100%; /* Cambia este valor con JavaScript para representar el progreso */
+    border-radius: 5px;
+  }
+
+
   
